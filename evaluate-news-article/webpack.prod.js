@@ -1,5 +1,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -18,7 +20,7 @@ module.exports = {
             //    3. Extract css into files
             {
                 test: /\.scss$/,
-                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+                use: [ MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'sass-loader' ]
             }
             /* HINT: structure
         {
@@ -40,6 +42,6 @@ module.exports = {
     ],
     optimization: {
         // TODO: Add Optimization for JS and CSS
-        
+        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     }
 }
