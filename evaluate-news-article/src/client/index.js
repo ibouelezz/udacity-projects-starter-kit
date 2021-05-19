@@ -4,10 +4,10 @@ import { handleSubmit } from './js/formHandler'
 
 // TODO include your scss file here
 // import './styles/resets.scss'
-// import './styles/base.scss'
+import './styles/base.scss'
 // import './styles/footer.scss'
 // import './styles/form.scss'
-// import './styles/header.scss'
+import './styles/header.scss'
 
 // TODO: get the button for submit
 // const submitBtn = document.getElementById('btn-submit')
