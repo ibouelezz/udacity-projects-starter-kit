@@ -5,34 +5,46 @@ const mockAPIResponse = require('./mockAPI.js')
 const PORT = 8081
 
 // TODO add Configuration to be able to use env variables
-const dotenv = require("dotenv");
-dotenv.config();
+const dotenv = require('dotenv')
+dotenv.config()
 
 // TODO: Create an instance for the server
-var path = require("path");
-const express = require("express");
+var path = require('path')
+const express = require('express')
 var cors = require('cors')
 var bodyParser = require('body-parser')
-const app = express();
+const fetch = require('node-fetch')
+const app = express()
 // TODO: Configure cors to avoid cors-origin issue
 app.use(cors())
 // TODO: Configure express to use body-parser as middle-ware.
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 // TODO: Configure express static directory.
-app.use(express.static("dist"));
+app.use(express.static('dist'))
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
+    // Use this when testing development
     res.sendFile(path.resolve('src/client/views/index.html'))
+
+    // Use this for production
+    // res.sendFile(path.resolve('dist/index.html'))
 })
 // a route that handling post request for new URL that coming from the frontend
 app.post('/articles', async function (req, res) {
-    const response = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${req.body.url}&lang=en`)
-    return res.send(response.json())
+    console.log(req.body.url)
+    const response = await fetch(
+        `https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${req.body.url}&lang=en`
+    )
+    const jsond = await response.json()
+    const sample = {
+        score_tag: jsond.score_tag,
+        agreement: jsond.agreement,
+        subjectivity: jsond.subjectivity,
+        confidence: jsond.confidence,
+        irony: jsond.irony
+    }
+    return res.send(sample)
 })
 /* TODO:
     1. GET the url from the request body

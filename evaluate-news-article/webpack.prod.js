@@ -1,18 +1,23 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const { GenerateSW } = require('workbox-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     mode: 'production',
     module: {
         rules: [
             // TODO 1: Add babel Loader that match js files as development
             {
-                test: '/\.js$/',
+                test: '/.js$/',
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: 'babel-loader'
             },
             // TODO 2: Add Loaders for
             //    1. converting sass => css
@@ -20,7 +25,7 @@ module.exports = {
             //    3. Extract css into files
             {
                 test: /\.scss$/,
-                use: [ MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'sass-loader' ]
+                use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'sass-loader']
             }
             /* HINT: structure
         {
@@ -42,6 +47,6 @@ module.exports = {
     ],
     optimization: {
         // TODO: Add Optimization for JS and CSS
-        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
     }
 }
