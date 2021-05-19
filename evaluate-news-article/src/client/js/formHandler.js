@@ -15,7 +15,7 @@ function handleSubmit(event) {
             document.getElementById('score_tag').innerHTML = `Score Tag: ${res.score_tag}`
         })
     } else {
-        alert('Looks like an invalid URL, kindly try with a valid URL.')
+        alert('Looks like an invalid URL, kindly try again with a valid URL.')
     }
 }
 

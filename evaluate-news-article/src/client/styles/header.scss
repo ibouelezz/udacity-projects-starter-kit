@@ -3,10 +3,11 @@ $keycolor: rgb(211, 211, 211);
 header {
     display: flex;
     justify-content: center;
-    padding: 10px 40px;
-}
+    padding: 10px 30px;
 
-h1 {
-    font: 800 2.5rem "Roboto Slab", serif;
-    text-decoration: underline overline $keycolor;
+    h1 {
+        font-size: -webkit-xxx-large;
+        font-family: 'Fjalla One', sans-serif;
+        text-decoration: underline overline $keycolor;
+    }
 }
