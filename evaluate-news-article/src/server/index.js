@@ -21,10 +21,10 @@ app.use(express.static('dist'))
 
 app.get('/', function (req, res) {
     // Use this when testing development
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    // res.sendFile(path.resolve('src/client/views/index.html'))
 
     // Use this for production
-    // res.sendFile(path.resolve('dist/index.html'))
+    res.sendFile(path.resolve('dist/index.html'))
 })
 // a route that handling post request for new URL that coming from the frontend
 app.post('/articles', async function (req, res) {
