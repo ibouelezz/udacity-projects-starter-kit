@@ -1,23 +1,77 @@
-![Udacity Banner](https://d20vrrgs8k4bvw.cloudfront.net/images/open-graph/udacity.png)
+# Evaluate A News Article with Natural Language Processing
 
-<h2 align="center">Udacity Starter Kit For Frontend Projects</h2>
-<h3 align="center">This starter files doesn't Belong by anyway to udacity is self, it's only my way to improve the
-experience of the projects and make things easier for the students by following step-by-step approach</h3>
+This project aims to build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs
+found on other websites. When a user submits a URL of an article, the web page then dispalys sentiment analysis returned
+from [meaningcloud API](https://www.meaningcloud.com/products/sentiment-analysis), based on the contents of the article.
 
-<p align="center">
- <a href="https://www.linkedin.com/in/mohammedelzanaty129/">
-    <img alt="Follow Me on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-<a href="https://twitter.com/mohammdelzanaty">
-    <img alt="Follow Me on Twitter" src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"></a>
-</p>
+## Build Tools
 
-## Solve the project in three steps 
+-   Node
+-   Frontend: HTML, CSS, JavaScript
+-   Server: Express
+-   Build tool: Webpack
+-   NLP: MeaningCloud API
+-   Test: Jest
+-   Service Worker: Workbox
 
-1. Select the project you need to start with 
-    - [Evaluate a News Article with Natural Language Processing](./evaluate-news-article/README.md)
-2. Solve All Todos in the code 
-3. Submit your project 
+## Installation
 
-------
+Make sure Node and npm are installed from the terminal.
 
-Made with ❤️️ and javascript
+```
+node -v
+npm -v
+```
+
+1. Move to the project folder
+
+```
+cd <project directory>
+```
+
+2. Clone the repo
+
+```
+git clone <repo>
+```
+
+3. Install npm
+
+```
+npm install
+```
+
+4. Install loaders and plugins
+
+```
+# Choose the necessary installation for your development mode
+npm i -D @babel/core @babel/preset-env babel-loader
+npm i -D style-loader node-sass css-loader sass-loader
+npm i -D clean-webpack-plugin
+npm i -D html-webpack-plugin
+npm i -D mini-css-extract-plugin
+npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin
+```
+
+5. Sign up for an API key at [meaningcloud.com](https://www.meaningcloud.com/developer/create-account)
+
+6. Configure environment variables using dotenv package
+    1. Install the dotenv package
+    ```
+    npm install dotenv
+    ```
+    2. Create a new `.env` file in the root of your project
+    3. Fill the `.env` file with your API key like this:
+    ```
+    API_KEY=**************************
+    ```
+7. Start the project
+
+|       Command        |    Action     |
+| :------------------: | :-----------: |
+| `npm run build-prod` | Build project |
+|     `npm start`      |  Run project  |
+
+8. Open browser at http://localhost:8081/
+
+README.md credits goes to: @emiribegic
